@@ -18,7 +18,7 @@ import com.TETOSOFT.tilegame.sprites.*;
 public class MapLoader 
 {
     private ArrayList tiles;
-    public int currentMap;
+    public static int currentMap;
     private GraphicsConfiguration gc;
 
     // host sprites used for cloning

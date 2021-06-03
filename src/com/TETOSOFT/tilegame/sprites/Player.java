@@ -1,6 +1,7 @@
 package com.TETOSOFT.tilegame.sprites;
 
 import com.TETOSOFT.graphics.Animation;
+import com.TETOSOFT.tilegame.MapLoader;
 
 /**
     The Player.
@@ -59,6 +60,18 @@ public class Player extends Creature
 
 
     public float getMaxSpeed() {
+    	switch(MapLoader.currentMap)
+    	{
+    		case 1:
+    			return 0.5f;
+    		case 2:
+    			return 1.0f;
+    		case 3:
+    			return 2.0f;
+    		case 4:
+    			return 3.0f;
+    			
+    	}
         return 0.5f;
     }
 
