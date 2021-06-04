@@ -144,4 +144,7 @@ public abstract class GameCore {
         method.
     */
     public abstract void draw(Graphics2D g);
+
+
+	
 }

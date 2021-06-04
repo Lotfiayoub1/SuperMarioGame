@@ -47,7 +47,7 @@ public class GameEngine extends GameCore
         
         // load resources
         drawer = new TileMapDrawer();
-        drawer.setBackground(mapLoader.loadImage("background.jpg"));
+        drawer.setBackground(mapLoader.loadImage("background_desert1.jpg"));
         
         // load first map
         map = mapLoader.loadNextMap();
@@ -255,6 +255,10 @@ public class GameEngine extends GameCore
             // normal update
             sprite.update(elapsedTime);
         }
+        
+        // update theme
+        
+        
     }
     
     
@@ -386,6 +390,18 @@ public class GameEngine extends GameCore
       
             map = mapLoader.loadNextMap();
             
+            switch(MapLoader.currentMap)
+        	{
+        		case 1:
+        			drawer.setBackground(mapLoader.loadImage("background_desert.jpg"));
+        		case 2:
+        			drawer.setBackground(mapLoader.loadImage("background_space.jpg"));
+        		case 3:
+        			drawer.setBackground(mapLoader.loadImage("background_forest.jpg"));
+        		case 4:
+        			drawer.setBackground(mapLoader.loadImage("background_beach.jpg"));
+        			
+        	}
         }
     }
     
