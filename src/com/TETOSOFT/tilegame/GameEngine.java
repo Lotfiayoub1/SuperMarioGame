@@ -41,7 +41,7 @@ public class GameEngine extends GameCore
         
         // set up input manager
         initInput();
-        
+        MapLoader.currentMap=0;
         // start resource manager
         mapLoader = new MapLoader(screen.getFullScreenWindow().getGraphicsConfiguration());
         
@@ -349,12 +349,7 @@ public class GameEngine extends GameCore
                 player.setState(Creature.STATE_DYING);
                 numLives--;
                 if(numLives==0) {
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
-                    stop();
+                    stop(collectedStars);                    
                 }
             }
         }
