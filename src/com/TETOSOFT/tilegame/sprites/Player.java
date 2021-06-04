@@ -67,9 +67,9 @@ public class Player extends Creature
     		case 2:
     			return 1.0f;
     		case 3:
-    			return 2.0f;
+    			return 1.25f;
     		case 4:
-    			return 3.0f;
+    			return 1.5f;
     			
     	}
         return 0.5f;
