@@ -4,31 +4,48 @@ pipeline {
   
   stages {
     
+    stage('clone') {
+      
+      steps {
+        
+          bat "rm -rf"
+          bat "git clone https://github.com/Lotfiayoub1/SuperMarioGame.git"
+        
+      }
+    }
+  
+  
     stage('build') {
       
       steps {
         
-          withAnt(installation:'ant'){
-                    bat 'ant compile'
-                }
+          bat "cd SuperMarioGame/src/com/TETOSOFT/test/ && javac StartMenu.java"
         
       }
     }
-    
+    stage('run') {
+      
+      steps {
+        
+          bat "cd SuperMarioGame/src/com/TETOSOFT/test/ && java StartMenu"
+        
+      }
+    }
+  
     stage('test') {
       
       steps {
         
-          bat 'ant unit-tests'
+          echo 'Testing the app...'
         
       }
     }
     
-    stage('packaging') {
+    stage('deploy') {
       
       steps {
         
-          bat 'ant package'
+          echo 'Deploying the app...'
         
       }
     }
