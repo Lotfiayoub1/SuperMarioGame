@@ -32,7 +32,6 @@ public class GameEngine extends GameCore
     private GameAction moveRight;
     private GameAction jump;
     private GameAction exit;
-    private int collectedStars=0;
     private int numLives=6;
    
     public void init()

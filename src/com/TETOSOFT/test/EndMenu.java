@@ -16,14 +16,14 @@ public class EndMenu extends GameCore {
 	private boolean isWaiting;
 	private GameAction exit;
 	private GameAction restart;
-	private int collectedStars = 0;
+	private GameEngine game;
 	
 	public EndMenu(int collectedStars, ScreenManager screen) {
 		this.collectedStars = collectedStars;
 		this.screen = screen;
 	}
 
-	public void init() {
+	public void run() {
 
 		// set up input manager
 		initInput();
@@ -59,10 +59,12 @@ public class EndMenu extends GameCore {
 			isWaiting = false;
 			stop();
 		}
+		
 		if (restart.isPressed()) {
 			isWaiting = false;
 			screen.restoreScreen();
-			new GameEngine().run();
+			game = new GameEngine();
+			game.run();
 		}
 
 	}
@@ -84,5 +86,19 @@ public class EndMenu extends GameCore {
 		screen.update();
 
 	}
+
+	public GameAction getExit() {
+		return exit;
+	}
+
+
+	public GameAction getRestart() {
+		return restart;
+	}
+
+	public GameEngine getGame() {
+		return game;
+	}
+
 
 }
