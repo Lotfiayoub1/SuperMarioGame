@@ -16,6 +16,7 @@ public class EndMenu extends GameCore {
 	private boolean isWaiting;
 	private GameAction exit;
 	private GameAction restart;
+	private GameAction change;
 	private GameEngine game;
 	
 	public EndMenu(int collectedStars, ScreenManager screen) {
@@ -44,12 +45,14 @@ public class EndMenu extends GameCore {
 
 		exit = new GameAction("exit", GameAction.DETECT_INITAL_PRESS_ONLY);
 		restart = new GameAction("restart", GameAction.DETECT_INITAL_PRESS_ONLY);
+		change = new GameAction("restart", GameAction.DETECT_INITAL_PRESS_ONLY);
 
 		inputManager = new InputManager(screen.getFullScreenWindow());
 		inputManager.setCursor(InputManager.INVISIBLE_CURSOR);
 
 		inputManager.mapToKey(exit, KeyEvent.VK_ESCAPE);
 		inputManager.mapToKey(restart, KeyEvent.VK_R);
+		inputManager.mapToKey(change, KeyEvent.VK_C);
 
 	}
 
@@ -62,11 +65,14 @@ public class EndMenu extends GameCore {
 		
 		if (restart.isPressed()) {
 			isWaiting = false;
-			screen.restoreScreen();
-			game = new GameEngine();
+			game = new GameEngine(screen);
 			game.run();
 		}
 
+		if (change.isPressed()) {
+			isWaiting = false;
+			new StartMenu(screen).run();
+		}
 	}
 
 	public void draw(Graphics2D g) {
@@ -81,6 +87,8 @@ public class EndMenu extends GameCore {
 		g.setColor(Color.YELLOW);
 		g.drawString("Coins: " + collectedStars, screenWidth/2, screenHeight /2);
 		g.setColor(Color.GREEN);
+		g.drawString("Press C to change avatar.",2*screenWidth/5+10, screenHeight - 100);
+		g.setColor(Color.BLUE);
 		g.drawString("Press R to restart.",4*screenWidth/5, screenHeight - 100);
 
 		screen.update();
@@ -99,6 +107,5 @@ public class EndMenu extends GameCore {
 	public GameEngine getGame() {
 		return game;
 	}
-
 
 }

@@ -1,17 +1,6 @@
-package com.TETOSOFT.test;
+package test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import junit.framework.*;
-
-import org.junit.jupiter.api.Test;
-
-import com.TETOSOFT.graphics.Animation;
-import com.TETOSOFT.tilegame.GameEngine;
-import com.TETOSOFT.tilegame.MapLoader;
-import com.TETOSOFT.tilegame.sprites.Creature;
-import com.TETOSOFT.tilegame.sprites.Player;
-
-public class Speed extends GameEngine {
+public class SpeedTest { /*extends GameEngine {
 	
 	float max_speed;
 	Creature player = (Creature)getMap().getPlayer();
@@ -31,5 +20,6 @@ public class Speed extends GameEngine {
     			
     	}
 	    assertEquals(player.getMaxSpeed(),max_speed);
-	  }
-	}
+	  }*/
+
+}

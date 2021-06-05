@@ -20,6 +20,7 @@ public class MapLoader
     private ArrayList tiles;
     public static int currentMap;
     private GraphicsConfiguration gc;
+    private static int playerChoice;
 
     // host sprites used for cloning
     private Sprite playerSprite;
@@ -245,24 +246,20 @@ public class MapLoader
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void loadCharacters(int level)
+    public void loadCharacters()
     {
     	Image[][] images = new Image[4][];
     	String character = "";
-    	System.out.println("change to level | currentMap -->"+level+"|"+MapLoader.currentMap);
-    	switch(level)
+    	switch(playerChoice)
     	{
     		case 1:
     			character = "player11.png";
     			break;
     		case 2:
-    			character = "player11.png";
+    			character = "megaman.png";
     			break;
     		case 3:
-    			character = "player2.png";
-    			break;
-    		case 4:
-    			character = "player1.png";
+    			character = "zelda.png";
     			break;
     		default :
     			character = "player.png";
@@ -413,5 +410,15 @@ public class MapLoader
         musicSprite = new PowerUp.Music(anim);
         musicSprite=new PowerUp.Music(anim);
     }
+
+
+	public static int getPlayerChoice() {
+		return playerChoice;
+	}
+
+
+	public static void setPlayerChoice(int playerChoice) {
+		MapLoader.playerChoice = playerChoice;
+	}
 
 }

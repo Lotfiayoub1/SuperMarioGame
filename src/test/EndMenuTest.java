@@ -1,3 +1,5 @@
+package test;
+
 import static org.junit.Assert.assertNull;
 
 import java.awt.Color;
@@ -61,9 +63,6 @@ public class EndMenuTest {
 		endmenu.run();		
 		
 	}
-	
-
-	
 	
 
 }

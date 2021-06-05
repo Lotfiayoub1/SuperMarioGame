@@ -15,11 +15,7 @@ import com.TETOSOFT.tilegame.sprites.*;
 public class GameEngine extends GameCore 
 {
     
-    public static void main(String[] args) 
-    {
-        new GameEngine().run();
-    }
-    
+ 
     public static final float GRAVITY = 0.002f;
     
     private Point pointCache = new Point();
@@ -33,22 +29,23 @@ public class GameEngine extends GameCore
     private GameAction jump;
     private GameAction exit;
     private int numLives=6;
+    
+    public GameEngine(ScreenManager screen) {
+    	this.screen = screen;
+    }
    
     public void init()
     {
-        super.init();
-        
+    	isRunning=true;
         // set up input manager
         initInput();
         MapLoader.currentMap=0;
         // start resource manager
         mapLoader = new MapLoader(screen.getFullScreenWindow().getGraphicsConfiguration());
-        
         // load resources
         drawer = new TileMapDrawer();
         drawer.setBackground(mapLoader.loadImage("background_desert1.jpg"));
-        mapLoader.loadCharacters(MapLoader.currentMap);
-        System.out.println("init -->"+MapLoader.currentMap);
+        mapLoader.loadCharacters();
         
         // load first map
         map = mapLoader.loadNextMap();
@@ -379,7 +376,7 @@ public class GameEngine extends GameCore
                 numLives++;
                 collectedStars=0;
             }
-            mapLoader.loadCharacters(MapLoader.currentMap);
+            mapLoader.loadCharacters();
             
         } else if (powerUp instanceof PowerUp.Music) {
             // change the music
@@ -389,8 +386,7 @@ public class GameEngine extends GameCore
       
         	
         	map = mapLoader.loadNextMap();
-        	mapLoader.loadCharacters(MapLoader.currentMap);
-        	System.out.println("map -->"+MapLoader.currentMap);
+        	mapLoader.loadCharacters();
             
             switch(MapLoader.currentMap)
         	{
@@ -407,6 +403,7 @@ public class GameEngine extends GameCore
             
         }
     }
+
     
       
 }
