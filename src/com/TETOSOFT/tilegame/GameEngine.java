@@ -47,6 +47,8 @@ public class GameEngine extends GameCore
         // load resources
         drawer = new TileMapDrawer();
         drawer.setBackground(mapLoader.loadImage("background_desert1.jpg"));
+        mapLoader.loadCharacters(MapLoader.currentMap);
+        System.out.println("init -->"+MapLoader.currentMap);
         
         // load first map
         map = mapLoader.loadNextMap();
@@ -101,6 +103,7 @@ public class GameEngine extends GameCore
             }
             player.setVelocityX(velocityX);
         }
+        
         
     }
     
@@ -296,6 +299,7 @@ public class GameEngine extends GameCore
         }
         if (creature instanceof Player) {
             checkPlayerCollision((Player)creature, false);
+            
         }
         
         // change y
@@ -375,6 +379,7 @@ public class GameEngine extends GameCore
                 numLives++;
                 collectedStars=0;
             }
+            mapLoader.loadCharacters(MapLoader.currentMap);
             
         } else if (powerUp instanceof PowerUp.Music) {
             // change the music
@@ -382,7 +387,10 @@ public class GameEngine extends GameCore
         } else if (powerUp instanceof PowerUp.Goal) {
             // advance to next map      
       
-            map = mapLoader.loadNextMap();
+        	
+        	map = mapLoader.loadNextMap();
+        	mapLoader.loadCharacters(MapLoader.currentMap);
+        	System.out.println("map -->"+MapLoader.currentMap);
             
             switch(MapLoader.currentMap)
         	{
@@ -396,6 +404,7 @@ public class GameEngine extends GameCore
         			drawer.setBackground(mapLoader.loadImage("background_beach.jpg"));
         			
         	}
+            
         }
     }
     
