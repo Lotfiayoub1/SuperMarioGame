@@ -108,7 +108,7 @@ public class TileMapDrawer
                 (screenWidth - mapWidth);
             int y = screenHeight - background.getHeight(null);
 
-            g.drawImage(background, x, y, null);
+            g.drawImage(background, 0, 0, null);
         
         }
 
