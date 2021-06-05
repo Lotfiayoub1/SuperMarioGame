@@ -3,12 +3,31 @@ pipeline {
   agent any
   
   stages {
+    
+    stage('clone') {
+      
+      steps {
+        
+          sh "rm -rf"
+          sh "git clone https://github.com/Lotfiayoub1/SuperMarioGame.git"
+        
+      }
+    }
+  
   
     stage('build') {
       
       steps {
         
-          echo 'Building the app...'
+          sh "cd SuperMarioGame/src/com/TETOSOFT/test/ && javac StartMenu.java"
+        
+      }
+    }
+    stage('run') {
+      
+      steps {
+        
+          sh "cd SuperMarioGame/src/com/TETOSOFT/test/ && java StartMenu"
         
       }
     }
