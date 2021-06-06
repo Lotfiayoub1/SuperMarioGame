@@ -8,7 +8,6 @@ pipeline {
       
       steps {
         
-          bat "rm -rf"
           bat "git clone https://github.com/Lotfiayoub1/SuperMarioGame.git"
         
       }
