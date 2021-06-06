@@ -11,30 +11,28 @@ import com.TETOSOFT.tilegame.GameEngine;
 
 public class EndMenu extends GameCore {
 
-
 	private InputManager inputManager;
 	private boolean isWaiting;
 	private GameAction exit;
 	private GameAction restart;
 	private GameAction change;
 	private GameEngine game;
-	
+
 	public EndMenu(int collectedStars, ScreenManager screen) {
 		this.collectedStars = collectedStars;
 		this.screen = screen;
+		// set up input manager
+		initInput();
 	}
 
 	public void run() {
 
-		// set up input manager
-		initInput();
-		
 		isWaiting = true;
-		
+
 		Graphics2D g = screen.getGraphics();
 
 		draw(g);
-		
+
 		while (isWaiting) {
 			checkInput();
 		}
@@ -62,7 +60,7 @@ public class EndMenu extends GameCore {
 			isWaiting = false;
 			stop();
 		}
-		
+
 		if (restart.isPressed()) {
 			isWaiting = false;
 			game = new GameEngine(screen);
@@ -85,11 +83,11 @@ public class EndMenu extends GameCore {
 		g.setColor(Color.WHITE);
 		g.drawString("Press ESC for EXIT.", 50.0f, screenHeight - 100);
 		g.setColor(Color.YELLOW);
-		g.drawString("Coins: " + collectedStars, screenWidth/2, screenHeight /2);
+		g.drawString("Coins: " + collectedStars, screenWidth / 2, screenHeight / 2);
 		g.setColor(Color.GREEN);
-		g.drawString("Press C to change avatar.",2*screenWidth/5+10, screenHeight - 100);
+		g.drawString("Press C to change avatar.", 2 * screenWidth / 5 + 10, screenHeight - 100);
 		g.setColor(Color.BLUE);
-		g.drawString("Press R to restart.",4*screenWidth/5, screenHeight - 100);
+		g.drawString("Press R to restart.", 4 * screenWidth / 5, screenHeight - 100);
 
 		screen.update();
 
@@ -99,13 +97,20 @@ public class EndMenu extends GameCore {
 		return exit;
 	}
 
-
 	public GameAction getRestart() {
 		return restart;
 	}
 
 	public GameEngine getGame() {
 		return game;
+	}
+
+	public boolean isWaiting() {
+		return isWaiting;
+	}
+
+	public GameAction getChange() {
+		return change;
 	}
 
 }

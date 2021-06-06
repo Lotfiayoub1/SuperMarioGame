@@ -1,13 +1,19 @@
 package com.TETOSOFT.tilegame;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
 
-import com.TETOSOFT.graphics.*;
-import com.TETOSOFT.input.*;
+import com.TETOSOFT.graphics.ScreenManager;
+import com.TETOSOFT.graphics.Sprite;
+import com.TETOSOFT.input.GameAction;
+import com.TETOSOFT.input.InputManager;
 import com.TETOSOFT.test.GameCore;
-import com.TETOSOFT.tilegame.sprites.*;
+import com.TETOSOFT.tilegame.sprites.Creature;
+import com.TETOSOFT.tilegame.sprites.Player;
+import com.TETOSOFT.tilegame.sprites.PowerUp;
 
 /**
  * GameManager manages all parts of the game.
@@ -403,6 +409,10 @@ public class GameEngine extends GameCore
             
         }
     }
+
+	public GameAction getExit() {
+		return exit;
+	}
 
     
       
